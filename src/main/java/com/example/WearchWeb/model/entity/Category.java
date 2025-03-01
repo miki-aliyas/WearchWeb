@@ -8,8 +8,10 @@ import java.util.List;
 @Entity
 @Table(name = "Category")
 public class Category {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     private Long id;
 
     @Column(name = "category_name")
@@ -18,8 +20,8 @@ public class Category {
     @Column(name = "image_name")
     private String imageName;
 
-    @OneToOne(
-            mappedBy = "Category",
+    @OneToMany(
+            mappedBy = "category",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
@@ -58,5 +60,14 @@ public class Category {
 
     public void setClothesItemList(List<ClothesItem> clothesItemList) {
         this.clothesItemList = clothesItemList;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", categoryName=" + categoryName +
+                ", imageName=" + imageName + '\'' +
+                "}";
     }
 }

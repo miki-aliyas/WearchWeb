@@ -3,19 +3,20 @@ package com.example.WearchWeb.model.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "ClothesItem")
+@Table(name = "Clothes_Item")
 public class ClothesItem {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
 
     //　画像名
     @Column(name = "image_name")
     private String imageName;
 
-   @ManyToOne
-   @JoinColumn(name = "category_id")
-   private Category category;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     //　サイズ(String)
     @Column(name = "size_name")
@@ -23,23 +24,23 @@ public class ClothesItem {
 
     //　着丈(int)
     @Column(name = "dress_length")
-    private Integer length;
+    private Long dressLength;
 
     //　肩幅(int)
     @Column(name = "shoulder_width")
-    private Integer shoulderWidth;
+    private Long shoulderWidth;
 
     //　袖丈(int)
     @Column(name = "sleeve_length")
-    private Integer sleeveLength;
+    private Long sleeveLength;
 
     //　袖幅(int)
     @Column(name = "sleeve_width")
-    private Integer sleeveWidth;
+    private Long sleeveWidth;
 
     //　首幅(int)
     @Column(name = "neck_width")
-    private Integer neckWidth ;
+    private Long neckWidth ;
 
     //　素材(String)
     @Column(name = "material")
@@ -47,11 +48,11 @@ public class ClothesItem {
 
     public ClothesItem() {}
 
-    public ClothesItem(Category category, String imageName, String sizeName, Integer length, Integer shoulderWidth, Integer sleeveLength, Integer sleeveWidth, Integer neckWidth, String material) {
+    public ClothesItem(String imageName, Category category, String sizeName, Long dressLength, Long shoulderWidth, Long sleeveLength, Long sleeveWidth, Long neckWidth, String material) {
         this.imageName = imageName;
         this.category = category;
         this.sizeName = sizeName;
-        this.length = length;
+        this.dressLength = dressLength;
         this.shoulderWidth = shoulderWidth;
         this.sleeveLength = sleeveLength;
         this.sleeveWidth = sleeveWidth;
@@ -91,43 +92,43 @@ public class ClothesItem {
         this.sizeName = sizeName;
     }
 
-    public Integer getLength() {
-        return length;
+    public Long getDressLength() {
+        return dressLength;
     }
 
-    public void setLength(Integer length) {
-        this.length = length;
+    public void setDressLength(Long dressLength) {
+        this.dressLength = dressLength;
     }
 
-    public Integer getShoulderWidth() {
+    public Long getShoulderWidth() {
         return shoulderWidth;
     }
 
-    public void setShoulderWidth(Integer shoulderWidth) {
+    public void setShoulderWidth(Long shoulderWidth) {
         this.shoulderWidth = shoulderWidth;
     }
 
-    public Integer getSleeveLength() {
+    public Long getSleeveLength() {
         return sleeveLength;
     }
 
-    public void setSleeveLength(Integer sleeveLength) {
+    public void setSleeveLength(Long sleeveLength) {
         this.sleeveLength = sleeveLength;
     }
 
-    public Integer getSleeveWidth() {
+    public Long getSleeveWidth() {
         return sleeveWidth;
     }
 
-    public void setSleeveWidth(Integer sleeveWidth) {
+    public void setSleeveWidth(Long sleeveWidth) {
         this.sleeveWidth = sleeveWidth;
     }
 
-    public Integer getNeckWidth() {
+    public Long getNeckWidth() {
         return neckWidth;
     }
 
-    public void setNeckWidth(Integer neckWidth) {
+    public void setNeckWidth(Long neckWidth) {
         this.neckWidth = neckWidth;
     }
 
@@ -139,4 +140,18 @@ public class ClothesItem {
         this.material = material;
     }
 
+    @Override
+    public String toString() {
+        return "ClothesItem{" +
+                "id=" + id + '\'' +
+                ", imageName=" + imageName + '\'' +
+                ", size_name=" + sizeName + '\'' +
+                ", dressLength=" + dressLength + '\'' +
+                ", shoulderWidth=" + shoulderWidth + '\'' +
+                ", sleeveLength=" + sleeveLength + '\'' +
+                ", sleeveWidth=" + sleeveWidth + '\'' +
+                ", neckWidth=" + neckWidth + '\'' +
+                ", material=" + material + '\'' +
+                '}';
+    }
 }
