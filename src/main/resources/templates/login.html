@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/template.css}" rel="stylesheet" />
+    <title>ログイン画面</title>
+</head>
+<body>
+<div class="form_container">
+    <form th:action="@{/login}" method="post">
+        <h1>ログインフォーム</h1>
+        <hr />
+        <div class="ui_form">
+            <div class="form_field">
+                <label>ユーザー名</label>
+                <input type="text" placeholder="ユーザー名" name="username">
+            </div>
+            <div class="form_field">
+                <label>パスワード</label>
+                <input type="text" placeholder="パスワード" name="password">
+            </div>
+            <button class="submit_button">ログイン</button>
+            <div class="message_ng" th:if="${param.error}">ユーザー名とパスワードが間違っています。</div>
+            <div class="message_logout" th:if="${param.logout}">ログアウトしました。</div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
